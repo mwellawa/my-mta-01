@@ -1,0 +1,4 @@
+service {
+//"tinyworld.tinydb::myview" as "euro" keys generate local "ID";
+"tinyworld.tinydb::tinyf.world" as "continents";
+}
