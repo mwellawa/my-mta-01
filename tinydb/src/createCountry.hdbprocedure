@@ -1,8 +1,8 @@
 PROCEDURE "tinyworld.tinydb::createCountry" (
 	IN im_country NVARCHAR(100), im_continent NVARCHAR(100),
 	OUT ex_error NVARCHAR(100) )
-   LANGUAGE SQLSCRIPT SQL 
-   SECURITY INVOKER AS
+   LANGUAGE SQLSCRIPT 
+   SQL SECURITY INVOKER AS
    --READS SQL DATA AS
 BEGIN
    /*************************************
