@@ -9,9 +9,23 @@
 	data-sap-ui-theme="sap_bluecrystal">
 </script>
 
+<script src="./Util.js" > </script>
+
 <script>
 var oModel = new sap.ui.model.odata.ODataModel("/world.xsodata", true);
-var oTable = new sap.ui.table.Table({ title: "Continets of the World" });
+var oTable = new sap.ui.table.Table({ 
+	title: "Continets of the World",
+	visibleRowCount: 5, 
+	id: "tinytab",
+	toolbar: new sap.ui.commons.Toolbar({
+		items: [
+			new sap.ui.commons.Button({
+				text: "Add Continent",
+				press: openFirstDialog
+			})
+		]
+	})
+});
 oTable.addColumn(new sap.ui.table.Column({ label: "Continent Name", template: "continent" }));
 oTable.setModel(oModel); 
 oTable.bindRows("/continents"); 
