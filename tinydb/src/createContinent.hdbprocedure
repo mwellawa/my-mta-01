@@ -17,6 +17,4 @@ BEGIN
 	else
 		ex_error := 'ERROR: Continent ' || :im_continent || ' already exists!';
 	end if;
-   
-   
 END
