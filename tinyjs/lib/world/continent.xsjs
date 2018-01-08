@@ -3,20 +3,28 @@ function saveContinent(continent) {
 	var output = JSON.stringify(continent);
 	var fnCreateContinent = conn.loadProcedure("tinyworld.tinydb::createContinent");
 	var result = fnCreateContinent({
-		IM_CONTINENT: continent.name
+		IM_CONTINENT: continent.continentName
 	});
 	conn.commit();
 	conn.close();
 	if (result && result.EX_ERROR !== null) {
-		return result.EX_ERROR;
+		return {
+			body: result,
+			status: $.net.http.BAD_REQUEST
+		};
 	} else {
-		return output;
+		return {
+			body: output,
+			status: $.net.http.CREATED
+		};
 	}
 }
-var continent = {
-	name: $.request.parameters.get("continent")
-};
+
+var body = $.request.body.asString();
+var continent = JSON.parse(body);
+
 // validate the inputs here!
 var output = saveContinent(continent);
 $.response.contentType = "application/json";
-$.response.setBody(output);
+$.response.setBody(output.body);
+$.response.status = output.status;
