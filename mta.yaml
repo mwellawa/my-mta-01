@@ -2,6 +2,8 @@ modules:
   - name: tinydb
     type: hdb
     path: tinydb
+    requires:
+      - name: hdi_tinydb
   - name: tinyjs
     type: nodejs
     path: tinyjs
@@ -31,7 +33,9 @@ resources:
       hdi-container-name: '${service-name}'
   - name: tiny_uaa
     type: com.sap.xs.uaa
+    parameters:
+      path: ./xs-security.json
 ID: tinyworld
 _schema-version: '2.0'
-version: 1.0.1
-description: Tiny World App 1.0.1
+version: 1.0.2
+description: Tiny World App 1.0.2
